@@ -1,0 +1,3 @@
+﻿  Parser.cpp
+I:\MultithreadedProgramCreator\MP Translator\Parser.cpp(53,34): warning C4101: 'ex': unreferenced local variable
+  MP Translator.vcxproj -> I:\MultithreadedProgramCreator\MP Translator\Debug\MP Translator.exe

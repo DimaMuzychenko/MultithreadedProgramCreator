@@ -139,16 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ConstAssignment.cpp" />
+    <ClCompile Include="Interpretator.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Parser.cpp" />
     <ClCompile Include="Token.cpp" />
-    <ClCompile Include="VarAssignment.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ConstAssignment.hpp" />
-    <ClInclude Include="ICommand.hpp" />
+    <ClInclude Include="Interpretator.hpp" />
+    <ClInclude Include="Parser.hpp" />
     <ClInclude Include="Token.hpp" />
-    <ClInclude Include="VarAssignment.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
