@@ -3,60 +3,71 @@
 std::vector<Token> Parser::Parse(std::istream& code) const
 {
 	std::vector<Token> tokens;
-	Token nextToken;
-
-	while (code >> nextToken.value)
+	std::string nextWord;
+	TokenType tokenType;
+	std::string tokenValue;
+	while (code >> nextWord)
 	{
-		if (nextToken.value == "read")
+		tokenValue.clear();
+
+		if (nextWord == "thread")
 		{
-			nextToken.type = TokenType::READ;
+			tokenType = TokenType::THREAD;
 		}
-		else if (nextToken.value == "print")
+		else if (nextWord == "endthread")
 		{
-			nextToken.type = TokenType::PRINT;
+			tokenType = TokenType::ENDTHREAD;
 		}
-		else if (nextToken.value == "=")
+		else if (nextWord == "read")
 		{
-			nextToken.type = TokenType::ASSIGN;
+			tokenType = TokenType::READ;
 		}
-		else if (nextToken.value.c_str() == "==")
+		else if (nextWord == "print")
 		{
-			nextToken.type = TokenType::EQ_COMP;
+			tokenType = TokenType::PRINT;
 		}
-		else if (nextToken.value.c_str() == "<")
+		else if (nextWord == "=")
 		{
-			nextToken.type = TokenType::LESS_COMP;
+			tokenType = TokenType::ASSIGN;
 		}
-		else if (nextToken.value.c_str() == "if")
+		else if (nextWord == "==")
 		{
-			nextToken.type = TokenType::IF;
+			tokenType = TokenType::EQ_COMP;
 		}
-		else if (nextToken.value.c_str() == "then")
+		else if (nextWord == "<")
 		{
-			nextToken.type = TokenType::THEN;
+			tokenType = TokenType::LESS_COMP;
 		}
-		else  if (nextToken.value.c_str() == "else")
+		else if (nextWord == "if")
 		{
-			nextToken.type = TokenType::ELSE;
+			tokenType = TokenType::IF;
 		}
-		else if (nextToken.value.c_str() == "endif")
+		else if (nextWord == "then")
 		{
-			nextToken.type = TokenType::ENDIF;
+			tokenType = TokenType::THEN;
 		}
-		else // variable or numerical literal
+		else  if (nextWord == "else")
+		{
+			tokenType = TokenType::ELSE;
+		}
+		else if (nextWord == "endif")
+		{
+			tokenType = TokenType::ENDIF;
+		}
+		else // name or numerical literal
 		{
 			try
 			{
-				std::stoul(nextToken.value);
-				nextToken.type = TokenType::NUM_LITERAL;
+				std::stoul(nextWord);
+				tokenType = TokenType::NUM_LITERAL;
 			}
 			catch (std::invalid_argument& ex)
 			{
-				nextToken.type = TokenType::VARIABLE;
+				tokenType = TokenType::NAME;
 			}
 		}
 
-		tokens.push_back(nextToken);
+		tokens.push_back({ tokenType, std::move(tokenValue) });
 	}
 
 	return tokens;

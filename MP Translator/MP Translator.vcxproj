@@ -116,6 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,6 +131,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,14 +141,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Interpretator.cpp" />
+    <ClCompile Include="CommandEqComp.cpp" />
+    <ClCompile Include="CommandLessComp.cpp" />
+    <ClCompile Include="CommandPrint.cpp" />
+    <ClCompile Include="Compiler.cpp" />
+    <ClCompile Include="CommandRead.cpp" />
+    <ClCompile Include="CommandAssign.cpp" />
+    <ClCompile Include="Context.cpp" />
+    <ClCompile Include="Interpreter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Parser.cpp" />
+    <ClCompile Include="Thread.cpp" />
     <ClCompile Include="Token.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Interpretator.hpp" />
+    <ClInclude Include="CommandEqComp.hpp" />
+    <ClInclude Include="CommandLessComp.hpp" />
+    <ClInclude Include="CommandPrint.hpp" />
+    <ClInclude Include="Compiler.hpp" />
+    <ClInclude Include="CommandRead.hpp" />
+    <ClInclude Include="CommandAssign.hpp" />
+    <ClInclude Include="Context.hpp" />
+    <ClInclude Include="ICommand.hpp" />
+    <ClInclude Include="Interpreter.hpp" />
     <ClInclude Include="Parser.hpp" />
+    <ClInclude Include="Thread.hpp" />
     <ClInclude Include="Token.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -5,8 +5,6 @@
 
 int main()
 {
-	Parser parser;
-
-	auto tokens = parser.Parse(std::cin);
+	
 	return 0;
 }

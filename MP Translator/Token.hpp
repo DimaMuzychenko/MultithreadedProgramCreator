@@ -3,7 +3,7 @@
 #include <string>
 
 
-enum TokenType
+enum class TokenType
 {	
 	READ,
 	PRINT,
@@ -14,8 +14,10 @@ enum TokenType
 	THEN,
 	ELSE,
 	ENDIF,
-	VARIABLE,
-	NUM_LITERAL
+	NAME,
+	NUM_LITERAL, 
+	THREAD,
+	ENDTHREAD,
 };
 
 struct Token
