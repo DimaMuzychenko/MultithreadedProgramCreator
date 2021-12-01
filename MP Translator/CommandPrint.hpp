@@ -5,9 +5,13 @@
 class CommandPrint : public ICommand
 {
 public:
-	void Exec(Thread& thread) override;
+	CommandPrint(std::string operand) noexcept;
 
-	std::string ToCpp() override;
+	void Exec(Thread& thread) const override;
+
+	std::string ToCpp() const noexcept override;
+
+	CommandType Type() const noexcept override;
 
 private:
 	std::string operand;

@@ -1,0 +1,33 @@
+thread s1
+    a = 5
+    b = a
+    read a
+    print b
+    if a == 9 then
+        read b
+    else
+        if a < 5 then
+            print a
+        else
+            a = 0
+            print a
+        endif
+    endif
+endthread
+
+thread s2
+    a = 5
+    b = a
+    read a
+    print b
+    if a == 0 then
+        read b
+    else
+        if a < 0 then
+            print a
+        else
+            a = 0
+            print a
+        endif
+    endif
+endthread

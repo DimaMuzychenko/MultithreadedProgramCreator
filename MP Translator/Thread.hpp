@@ -14,15 +14,20 @@ class Thread
 public:
 	Thread(const std::string& name, std::shared_ptr<Context>& context);
 	Thread(std::string&& name, std::shared_ptr<Context>& context);
-	void AddCommand(ICommand& command);
+	~Thread();
+	void AddCommand(ICommand* command);
 	void Exec(size_t amount = 1);
 	size_t Size() const;
 	bool IsFinished() const;
+	std::shared_ptr<Context> GetContext() const noexcept;
+	std::string ToCpp()const noexcept;
+	std::string GetName()const noexcept;
 
 private:
 	std::shared_ptr<Context> context;
-	std::vector<std::unique_ptr<ICommand>> commands;
+	std::vector<ICommand*> commands;
 	std::string name;
-	size_t index = 0;
+	size_t index;
+	size_t ifNesting;
 };
 

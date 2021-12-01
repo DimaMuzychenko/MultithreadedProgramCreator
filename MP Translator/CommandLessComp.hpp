@@ -5,9 +5,13 @@
 class CommandLessComp : public ICommand
 {
 public:
-	void Exec(Thread& thread) override;
+	CommandLessComp(std::string varName, std::string constName) noexcept;
 
-	std::string ToCpp() override;
+	void Exec(Thread& thread) const override;
+
+	std::string ToCpp() const noexcept override;
+
+	CommandType Type() const noexcept override;
 
 private:
 	std::string leftOperand;

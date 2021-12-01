@@ -5,9 +5,13 @@
 class CommandAssign : public ICommand
 {
 public:
-	void Exec(Thread& thread) override;
+	CommandAssign(std::string lhs, std::string rhs) noexcept;
 
-	std::string ToCpp() override;
+	void Exec(Thread& thread) const override;
+
+	std::string ToCpp()  const noexcept override;
+
+	CommandType Type() const noexcept override;
 
 private:
 	std::string leftOperand;
