@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/MP Translator/.vs/MP Translator
+/MP Translator/UpgradeLog.htm
+/.vs/MultithreadedProgramCreator/v17
+/.vs/MultithreadedProgramCreator/project-colors.json
+/.vs/slnx.sqlite
+/.vs/VSWorkspaceState.json
