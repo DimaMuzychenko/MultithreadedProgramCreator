@@ -6,13 +6,14 @@ std::string trd = "std::thread ";
 
 void Translator::TranslateToCpp(const std::vector<Thread>& threads, const std::string& outFileName) const
 {
-	std::ofstream file(outFileName, std::ios::out);
+	std::ofstream file(outFileName, std::ios::trunc);
 	if (!file.is_open())
 	{
 		throw std::runtime_error("File " + outFileName + "can't be created or opened!");
 	}
 	file	<< "#include <iostream> \n"
 			<< "#include <map> \n"
+			<< "#include <thread> \n"
 			<< "\n"
 			<< "std::map<std::string, uint32_t> context; \n"
 			<< "\n";

@@ -14,7 +14,7 @@ void CommandLessComp::Exec(Thread& thread) const
 std::string CommandLessComp::ToCpp() const noexcept
 {
 	std::stringstream ss;
-	ss << "(context[" << leftOperand << "] < " << rightOperand << ') ';
+	ss << "(context[\"" << leftOperand << "\"] < " << rightOperand << ") ";
 	return ss.str();
 }
 

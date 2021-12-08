@@ -14,7 +14,7 @@ void CommandRead::Exec(Thread& thread) const
 std::string CommandRead::ToCpp() const noexcept
 {
 	std::stringstream ss;
-	ss << "std::cin >> context[" << operand << "];" << std::endl;
+	ss << "std::cin >> context[\"" << operand << "\"];" << std::endl;
 	return ss.str();
 }
 

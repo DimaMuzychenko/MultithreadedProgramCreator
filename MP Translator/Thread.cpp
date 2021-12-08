@@ -3,22 +3,17 @@
 #include <iterator>
 
 
-Thread::Thread(const std::string& name, std::shared_ptr<Context>& context) : name{ name }, context{ context }
+Thread::Thread(const std::string& name, std::shared_ptr<Context>& context) : context( context ), name( name ), index(0), ifNesting(0)
 {
-
-}
-
-Thread::Thread(std::string&& name, std::shared_ptr<Context>& context) : name{ std::move(name) }, context{ context }
-{
-
+	commands.reserve(100);
 }
 
 Thread::~Thread()
 {
-	for (auto p : commands)
+	/*for (auto p : commands)
 	{
 		delete p;
-	}
+	}*/
 }
 
 void Thread::AddCommand(ICommand* command)

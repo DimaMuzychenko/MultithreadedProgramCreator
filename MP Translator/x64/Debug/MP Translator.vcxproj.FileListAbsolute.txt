@@ -1,2 +1,3 @@
 I:\MultithreadedProgramCreator\MP Translator\x64\Debug\MP Translator.exe
 C:\Users\Dmytro Muzychenko\source\repos\MultithreadedProgramCreator\MP Translator\x64\Debug\MP Translator.exe
+D:\MultithreadedProgramCreator\MP Translator\x64\Debug\MP Translator.exe

@@ -60,10 +60,12 @@ std::vector<Token> Parser::Parse(std::istream& code) const
 			{
 				std::stoul(nextWord);
 				tokenType = TokenType::NUM_LITERAL;
+				tokenValue = std::move(nextWord);
 			}
 			catch (std::invalid_argument& ex)
 			{
 				tokenType = TokenType::NAME;
+				tokenValue = std::move(nextWord);
 			}
 		}
 

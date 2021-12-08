@@ -28,7 +28,7 @@ std::vector<Thread> Compiler::Compile(const std::vector<Token>& tokens) const
 				++threadNum;
 				isThreadEnded = false;
 				if (token->type == TokenType::NAME)
-				{
+				{					
 					threads.push_back(Thread(token->value, contextPtr));
 				}
 				else
@@ -83,7 +83,7 @@ std::vector<Thread> Compiler::Compile(const std::vector<Token>& tokens) const
 			if (token->type == TokenType::NAME)
 			{
 				ICommand* command = new CommandPrint(token->value);
-				threads[threadNum - 1].AddCommand(std::move(command));
+				threads[threadNum - 1].AddCommand(command);
 			}
 			else
 			{
@@ -102,13 +102,15 @@ std::vector<Thread> Compiler::Compile(const std::vector<Token>& tokens) const
 			{
 				if (compToken->type == TokenType::EQ_COMP)
 				{
-					ICommand* command = new CommandEqComp(lhsToken->value, rhsToken->value);
-					threads[threadNum - 1].AddCommand(std::move(command));
+					ICommand* innerCommand = new CommandEqComp(lhsToken->value, rhsToken->value);
+					ICommand* command = new CommandIfThen(innerCommand);
+					threads[threadNum - 1].AddCommand(command);
 				}
 				if (compToken->type == TokenType::LESS_COMP)
 				{
-					ICommand* command = new CommandLessComp(lhsToken->value, rhsToken->value);
-					threads[threadNum - 1].AddCommand(std::move(command));
+					ICommand* innerCommand = new CommandLessComp(lhsToken->value, rhsToken->value);
+					ICommand* command = new CommandIfThen(innerCommand);
+					threads[threadNum - 1].AddCommand(command);
 				}
 			}
 			else
@@ -119,12 +121,12 @@ std::vector<Thread> Compiler::Compile(const std::vector<Token>& tokens) const
 		else if (token->type == TokenType::ELSE)
 		{
 			ICommand* command = new CommandElse();
-			threads[threadNum - 1].AddCommand(std::move(command));
+			threads[threadNum - 1].AddCommand(command);
 		}
 		else if (token->type == TokenType::ENDIF)
 		{
 			ICommand* command = new CommandEndIf();
-			threads[threadNum - 1].AddCommand(std::move(command));
+			threads[threadNum - 1].AddCommand(command);
 		}
 		else if (token->type == TokenType::ENDTHREAD)
 		{

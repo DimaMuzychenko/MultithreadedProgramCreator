@@ -14,7 +14,7 @@ void CommandEqComp::Exec(Thread& thread) const
 std::string CommandEqComp::ToCpp() const noexcept
 {
 	std::stringstream ss;
-	ss << "(context[" << leftOperand << "] == " << rightOperand << ") ";
+	ss << "(context[\"" << leftOperand << "\"] == " << rightOperand << ") ";
 	return ss.str();
 }
 

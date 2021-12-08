@@ -15,7 +15,7 @@ void CommandPrint::Exec(Thread& thread) const
 std::string CommandPrint::ToCpp() const noexcept
 {
 	std::stringstream ss;
-	ss << "std::cout << context[" << operand << "] << std::endl;" << std::endl;
+	ss << "std::cout << context[\"" << operand << "\"] << std::endl;" << std::endl;
 	return ss.str();
 }
 
