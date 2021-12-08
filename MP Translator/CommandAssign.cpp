@@ -15,8 +15,17 @@ void CommandAssign::Exec(Thread& thread) const
 
 std::string CommandAssign::ToCpp()  const noexcept
 {
+
 	std::stringstream ss;
-	ss << "context[\"" << leftOperand << "\"]" << " = " << rightOperand << ';' << std::endl;
+	try
+	{
+		std::stoi(rightOperand);
+		ss << "SetVar(\"" << leftOperand << "\", " << rightOperand << ");\n";
+	}
+	catch (std::exception)
+	{
+		ss << "SetVar(\"" << leftOperand << "\", GetVarVal(\"" << rightOperand << "\"));\n";
+	}	
 	return ss.str();
 }
 

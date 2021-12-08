@@ -1,2 +1,3 @@
 C:\Users\Dmytro Muzychenko\source\repos\MultithreadedProgramCreator\MP Translator\x64\Release\MP Translator.exe
 D:\MultithreadedProgramCreator\MP Translator\x64\Release\MP Translator.exe
+I:\MPG\MP Translator\x64\Release\MP Translator.exe
