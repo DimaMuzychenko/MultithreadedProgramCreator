@@ -14,9 +14,31 @@ void Translator::TranslateToCpp(const std::vector<Thread>& threads, const std::s
 	file	<< "#include <iostream> \n"
 			<< "#include <map> \n"
 			<< "#include <thread> \n"
+			<< "#include <mutex> \n"
 			<< "\n"
 			<< "std::map<std::string, uint32_t> context; \n"
-			<< "\n";
+			<< "\n"
+			<< "std::mutex mtx; \n"
+			<< "\n"
+			<< "uint32_t& GetVar(const std::string& varName) \n"
+			<< "{ \n"
+			<< "return context[varName]; \n"
+			<< "} \n"
+			<< "\n"
+			<< "void SetVar(const std::string& varName, uint32_t val)\n"
+			<< "{\n"
+			<< "mtx.lock();\n"
+			<< "GetVar(varName) = val;\n"
+			<< "mtx.unlock();\n"
+			<< "}\n"
+			<< "uint32_t GetVarVal(const std::string& varName)\n"
+			<< "{\n"
+			<< "mtx.lock();\n"
+			<< "uint32_t val = GetVar(varName);\n"
+			<< "mtx.unlock();\n"
+			<< "return val;\n"
+			<< "}\n";
+			
 
 	for (const auto& th : threads)
 	{
